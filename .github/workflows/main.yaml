@@ -26,8 +26,8 @@ jobs:
         uses: docker/login-action@465a07811f14bebb1938fbed4728c6a1ff8901fc # ratchet:docker/login-action@v2
         with:
           registry: ghcr.io
-          username: krissmed
-          password: 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
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }} #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
       - name: Generate Docker image tag with short sha
         id: dockertag
         run: echo "img_tag=ghcr.io/${{ github.repository }}:$(git rev-parse --short HEAD)" >> ${GITHUB_OUTPUT}
